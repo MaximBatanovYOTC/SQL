@@ -43,7 +43,7 @@ INSERT INTO [dbo].[MaterialType]
   FROM [dbo].[materials_short_k_import]
 #### Заполнение таблицы material:  
 
-USE [dminin]
+USE [Mbatanov]
 GO
 
 INSERT INTO [dbo].[Material]
@@ -64,3 +64,18 @@ INSERT INTO [dbo].[Material]
 	  ,mt.ID
   FROM [dbo].[materials_short_k_import]mi,MaterialType mt
   where mi.[ Тип материала]=mt.Title
+#### заполнение таблицы productmaterial:  
+USE [Mbatanov]
+GO
+
+INSERT INTO [dbo].[ProductMaterial]
+           ([ProductID]
+           ,[MaterialID]
+           ,[Count])
+ #### SELECT 
+      p.ID
+	,m.ID
+	,l.[Необходимое количество материала]
+      
+  FROM [dbo].[Product] p,Material m, productmaterial_k_import l
+  where p.Title=l.Продукция and m.[Title]=l.[Наименование материала]
